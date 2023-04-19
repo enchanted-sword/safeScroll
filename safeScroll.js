@@ -29,7 +29,7 @@ function $css() {
     }
     else {$style.append(".filterDiv {position: relative; filter: blur(20px); transition: filter 0.5s;}" );}
     $style.append(".safeScrollCover {pointer-events: auto; position: absolute; opacity: 0.8; transition: opacity 0.6s; top: 0px; left: 0px; background-image: linear-gradient(45deg, #ff94ff, #0094ff);}" );
-    $style.append(".boldHeader {font-size: 112%; display: block; padding-bottom;}");
+    $style.append(".boldHeader {font-size: 112%; display: block; margin-bottom: 8px;}");
 }
 
 $css();
@@ -175,7 +175,7 @@ $(function() {
     });
     let $plus = $("<span>");
     $plus.text("\u2795");
-    $plus.css({display: "inline-block", height: "25px", marginLeft: "4px"});
+    $plus.css({cursor: "pointer", display: "inline-block", height: "25px", marginLeft: "4px"});
     $apeture.append($plus);
     $plus.click(function() {
         let val = $input.val().toLowerCase();
