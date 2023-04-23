@@ -63,13 +63,14 @@ function tagSearch(items, filters) {
 
 function fill(HTMLCol, arr) {
     for (let i = 0; i < HTMLCol.length; ++i) {
-        arr.push(HTMLCol.eq(i).text());
+        arr.push(HTMLCol.eq(i).text().toLowerCase());
     }
 }
 
 function filter() {
     let filterTags = JSON.parse(localStorage.safeScrollFilter);
     let filterStyle = localStorage.safeScrollFilterStyle;
+    if (filterStyle === "disable") {return}
     let posts = $(".j8ha0").find(".FtjPK:not(.safeScrollFiltered, .safeScrollSafe)");
     for (let i = 0; i < posts.length; ++i) {
         let post = posts.eq(i);
@@ -192,6 +193,7 @@ $(function() {
         }
     });
     $apeture.append("<b class=\'boldHeader\'>filter style</b>");
+    $apeture.append("<p style=\'font-size: 69%;\'>reload the page to update filter style</p>");
     let $styleForm = $("<form>", {id: "safeScrollStyleForm"});
     $apeture.append($styleForm);
     let $radio0 = $("<input>", {type: "radio", id: "safeScrollStyleInput0", name: "safeScrollStyleInput", value: "default"});
@@ -199,7 +201,7 @@ $(function() {
     $radio0.focus(function() {
         localStorage.safeScrollFilterStyle = "default";
     });
-    let $label0 = $(`<label for="safeScrollStyleInput0"><b>default:</b><br><span style="margin-left: 22px;">blur + translucent overlay</span></label><br>`);
+    let $label0 = $(`<label><b>default:</b><br><span style="margin-left: 22px;">blur + translucent overlay</span></label><br>`);
     $styleForm.append($label0);
     let $radio1 = $("<input>", {type: "radio", id: "safeScrollStyleInput1", name: "safeScrollStyleInput", value: "blur"});
     $styleForm.append($radio1);
@@ -207,7 +209,7 @@ $(function() {
         localStorage.safeScrollFilterStyle = "blur";
     });
     $radio1.css("margin-top", "16px");
-    let $label1 = $(`<label for="safeScrollStyleInput1"><b>blur:</b><br><span style="margin-left: 22px;">blur only</span></label><br>`);
+    let $label1 = $(`<label><b>blur:</b><br><span style="margin-left: 22px;">blur only</span></label><br>`);
     $styleForm.append($label1);
     let $radio2 = $("<input>", {type: "radio", id: "safeScrollStyleInput2", name: "safeScrollStyleInput", value: "hide"});
     $styleForm.append($radio2);
@@ -215,8 +217,16 @@ $(function() {
         localStorage.safeScrollFilterStyle = "hide";
     });
     $radio2.css("margin-top", "16px");
-    let $label2 = $(`<label for="safeScrollStyleInput1"><b>hide:</b><br><span style="margin-left: 22px;">hide content of filtered posts</span></label><br>`);
+    let $label2 = $(`<label><b>hide:</b><br><span style="margin-left: 22px;">hide content of filtered posts</span></label><br>`);
     $styleForm.append($label2);
+    let $radio3 = $("<input>", {type: "radio", id: "safeScrollStyleInput3", name: "safeScrollStyleInput", value: "disable"});
+    $styleForm.append($radio3);
+    $radio3.focus(function() {
+        localStorage.safeScrollFilterStyle = "disable";
+    });
+    $radio3.css("margin-top", "16px");
+    let $label3 = $(`<label><b>disable:</b><br><span style="margin-left: 22px;">disable filtering</span></label><br>`);
+    $styleForm.append($label3);
     $(`input[value='${localStorage.safeScrollFilterStyle}']`).attr("checked", "true");
     $(document).ready(filter);
     $(document).scroll(filter);
