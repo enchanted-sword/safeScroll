@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         safeScroll
-// @version      1.0
+// @version      1.1
 // @description  Test
 // @author       dragongirlsnout
 // @match        https://www.tumblr.com/dashboard
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tumblr.com
+// @downloadURL  https://raw.githubusercontent.com/enchanted-sword/safeScroll/main/safeScroll.js
+// @updateURL    https://raw.githubusercontent.com/enchanted-sword/safeScroll/main/safeScroll.js
 // @grant        none
 // @require      https://code.jquery.com/jquery-3.6.4.min.js
 // ==/UserScript==
@@ -39,7 +41,7 @@ function $tag($t, obj) {
     let $filterTag = $("<button>", {type: "button", name: `button${obj}`, class: "safeScrollFilterTag"});
     $t.append($filterTag);
     $filterTag.text(obj);
-    $filterTag.dblclick(function() { 
+    $filterTag.dblclick(function() {
         $filterTag.hide("slow");
         let arr = JSON.parse(localStorage.safeScrollFilter);
         let n = arr.indexOf(obj);
@@ -47,7 +49,7 @@ function $tag($t, obj) {
             arr.splice(n);
         }
         else throw "Failed to remove object from array";
-        localStorage.safeScrollFilter = JSON.stringify(arr); 
+        localStorage.safeScrollFilter = JSON.stringify(arr);
     });
 }
 
