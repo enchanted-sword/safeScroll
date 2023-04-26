@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         safeScroll
-// @version      1.1
+// @version      1.2
 // @description  Test
 // @author       dragongirlsnout
 // @match        https://www.tumblr.com/dashboard
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tumblr.com
+// @icon         https://raw.githubusercontent.com/enchanted-sword/safeScroll/main/Icon.png
 // @downloadURL  https://raw.githubusercontent.com/enchanted-sword/safeScroll/main/safeScroll.js
 // @updateURL    https://raw.githubusercontent.com/enchanted-sword/safeScroll/main/safeScroll.js
 // @grant        none
@@ -20,7 +20,7 @@ function $css() {
     $(document.head).append($style);
     $style.append("#sSIcon {border-radius: 4px; position: fixed; top: 88px; right: 48px; z-index: 69;}")
     $style.append("#apeture {width: 240px; position: fixed; top: 80px; right: 40px; border-radius: 4px; background-color: white; padding: 8px;} ");
-    $style.append(".safeScrollFilterTagList {padding: 0px;} ");
+    $style.append(".safeScrollFilterTagList {padding: 0px; max-height: 240px; overflow-y: scroll;} ");
     $style.append(".safeScrollFilterTag {border: 2px solid gainsboro; border-radius: 4px; margin-bottom: 4px; padding: 4px; display: inline-block; width: 100%; overflow: hidden;} ");
     $style.append(".safeScrollFilterTag:hover {border-color: cornflowerblue;} ");
     $style.append("#sSI {all: unset; background-color: gainsboro; border-radius: 4px; width: 208px; padding: 3px; margin-top: 4px;} ");
@@ -137,7 +137,7 @@ $(function() {
     if (!localStorage.safeScrollFilterStyle) {
         localStorage.setItem("safeScrollFilterStyle", "default");
     }
-    let $icon = $("<img>", {src: "", width: 24, height: 24, id: "sSIcon"});
+    let $icon = $("<img>", {src: "https://raw.githubusercontent.com/enchanted-sword/safeScroll/main/Icon.png", width: 24, height: 24, id: "sSIcon"});
     $icon.click(function() {
         $apeture.toggle("slow");
     });
