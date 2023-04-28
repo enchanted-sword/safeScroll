@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         safeScroll
-// @version      1.2
+// @version      1.2.1
 // @description  Test
 // @author       dragongirlsnout
 // @match        https://www.tumblr.com/dashboard
@@ -18,7 +18,7 @@ var $ = window.jQuery;
 function $css() {
     let $style = $("<style>", {id: "safeScrollStyle"});
     $(document.head).append($style);
-    $style.append("#sSIcon {border-radius: 4px; position: fixed; top: 88px; right: 48px; z-index: 69;}")
+    $style.append("#sSIcon {position: fixed; top: 88px; right: 48px; z-index: 69;}")
     $style.append("#apeture {width: 240px; position: fixed; top: 80px; right: 40px; border-radius: 4px; background-color: white; padding: 8px;} ");
     $style.append(".safeScrollFilterTagList {padding: 0px; max-height: 240px; overflow-y: scroll;} ");
     $style.append(".safeScrollFilterTag {border: 2px solid gainsboro; border-radius: 4px; margin-bottom: 4px; padding: 4px; display: inline-block; width: 100%; overflow: hidden;} ");
