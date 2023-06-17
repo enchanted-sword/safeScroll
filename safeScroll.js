@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         safeScroll
-// @version      1.2.1
+// @version      1.2.2
 // @description  Test
 // @author       dragongirlsnout
 // @match        https://www.tumblr.com/dashboard
