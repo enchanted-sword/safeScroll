@@ -86,7 +86,7 @@ function filter() {
         fill(ksdlh, items);
         if (kwflb.length > 0 || tagSearch(items, filterTags)) {
             post.addClass("safeScrollFiltered");
-            let contents = post.find(".GzjsW, .XZFs6");
+            let contents = post.find(".GzjsW, .k31gt");
             for (let l in contents) {
                 let content = contents.eq(l);
                 content.addClass("filterDiv");
