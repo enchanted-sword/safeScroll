@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         safeScroll
-// @version      1.2.2
+// @version      1.2.3
 // @description  Test
 // @author       dragongirlsnout
 // @match        https://www.tumblr.com/dashboard
@@ -231,5 +231,6 @@ $(function() {
     $styleForm.append($label3);
     $(`input[value='${localStorage.safeScrollFilterStyle}']`).attr("checked", "true");
     $(document).ready(filter);
+    $(window).on("load", filter);
     $(document).scroll(filter);
 });
